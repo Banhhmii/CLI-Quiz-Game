@@ -14,16 +14,27 @@ const questionBank = [
   { question: "What continent is also a country?", answer: "Australia" },
 ];
 
-let score = 0;
 
-for (let q of questionBank) {
-    let userAnswer = prompt(q.question + " ");
-    if (userAnswer.toLowerCase() === q.answer.toLowerCase()) {
-        console.log("Correct!");
-        score++;
-    } else {
-        console.log("Wrong! The correct answer is " + q.answer);
-    }
-    
+function getAnswer(question) {
+    let userAnswer = prompt(question + " ");
+    return userAnswer;
 }
-console.log("Your final score is " + score + "/" + questionBank.length);
+
+function playGame() {
+    let score = 0;
+    for (let q of questionBank) {
+        let userAnswer = getAnswer(q.question);
+        if (userAnswer.toLowerCase() === q.answer.toLowerCase()) {
+            console.log("Correct!");
+            score++;
+        } else {
+            console.log("Wrong! The correct answer is " + q.answer);
+        }
+    }
+    return score;
+}
+
+function printScore() {
+    console.log("Your final score is " + playGame() + "/" + questionBank.length);
+}
+printScore();
